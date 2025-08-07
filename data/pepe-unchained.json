@@ -1,0 +1,15 @@
+{
+  "title": "Pepe Unchained",
+  "slug": "pepe-unchained",
+  "symbol": "$PEPU",
+  "description": "Pepe Unchained ($PEPU) is the first Pepe-themed Layer 2 blockchain solution built on Ethereum. After raising $73 million in presale, it launched and achieved 8x gains. Features include staking rewards, double staking benefits, and a dedicated blockchain for meme transactions.",
+  "affiliateLink": "https://pepeunchained.com",
+  "raise": "$73,000,000", 
+  "apy": "Staking Available",
+  "status": "Launched",
+  "progress": 100,
+  "date": "2025-02-15",
+  "category": "Layer 2 Meme",
+  "participants": 45000,
+  "endDate": "2025-02-15"
+}
