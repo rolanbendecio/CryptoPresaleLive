@@ -30,21 +30,34 @@ export default function HomePageClient({ initialPosts }: HomePageClientProps) {
   const [posts, setPosts] = useState<PresaleWithRanking[]>(initialPosts as PresaleWithRanking[])
   const [isLive, setIsLive] = useState(true)
   const [lastUpdate, setLastUpdate] = useState(new Date())
+  const [isUpdating, setIsUpdating] = useState(false)
+  const [apiError, setApiError] = useState<string | null>(null)
 
-  // Live ranking updates every 8 seconds
+  // Live ranking updates every 8 seconds with real-time data
   useEffect(() => {
     if (!isLive) return
 
-    const interval = setInterval(() => {
-      setPosts(currentPosts => {
-        const updatedPosts = updateRankings([...currentPosts])
+    const updateData = async () => {
+      setIsUpdating(true)
+      setApiError(null)
+      
+      try {
+        const currentPosts = posts
+        const updatedPosts = await updateRankings([...currentPosts])
+        setPosts(updatedPosts)
         setLastUpdate(new Date())
-        return updatedPosts
-      })
-    }, 8000) // Update every 8 seconds
+      } catch (error) {
+        console.error('Error updating rankings:', error)
+        setApiError('Failed to update real-time data. Using cached values.')
+      } finally {
+        setIsUpdating(false)
+      }
+    }
+
+    const interval = setInterval(updateData, 8000) // Update every 8 seconds
 
     // Initial update
-    setPosts(currentPosts => updateRankings([...currentPosts]))
+    updateData()
 
     return () => clearInterval(interval)
   }, [isLive])
@@ -72,7 +85,10 @@ export default function HomePageClient({ initialPosts }: HomePageClientProps) {
             <span className={`font-medium ${isLive ? 'text-green-400' : 'text-gray-400'}`}>
               {isLive ? '● LIVE' : '○ PAUSED'}
             </span>
-            <span className="text-gray-400">Real-time ranking updates</span>
+            <span className="text-gray-400">Real-time market data from CoinGecko API</span>
+            {isUpdating && (
+              <span className="text-blue-400 text-xs animate-pulse">🔄 Fetching...</span>
+            )}
           </div>
           <button
             onClick={() => setIsLive(!isLive)}
@@ -81,6 +97,11 @@ export default function HomePageClient({ initialPosts }: HomePageClientProps) {
             {isLive ? 'Pause' : 'Resume'} Live Updates
           </button>
         </div>
+        {apiError && (
+          <div className="mt-4 text-center">
+            <p className="text-yellow-400 text-sm">⚠️ {apiError}</p>
+          </div>
+        )}
       </div>
 
       {/* Stats Bar */}
@@ -139,11 +160,14 @@ export default function HomePageClient({ initialPosts }: HomePageClientProps) {
         <p className="text-gray-500 text-sm">
           Last updated: {lastUpdate.toLocaleTimeString()} • 
           <span className={`ml-2 ${isLive ? 'text-green-400' : 'text-gray-400'}`}>
-            {isLive ? 'Live rankings active' : 'Live updates paused'}
+            {isLive ? 'Real-time API data active' : 'Live updates paused'}
           </span>
-          {isLive && (
-            <span className="ml-2 text-blue-400 animate-pulse">🔄 Updating...</span>
+          {isUpdating && (
+            <span className="ml-2 text-blue-400 animate-pulse">🔄 Fetching from CoinGecko...</span>
           )}
+        </p>
+        <p className="text-gray-600 text-xs mt-1">
+          Market data powered by CoinGecko API • Updates every 8 seconds
         </p>
       </div>
     </div>

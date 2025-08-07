@@ -1,4 +1,6 @@
 // Live ranking system for crypto presales
+import { fetchRealTimeMarketData, generateFallbackMetrics, hasRealTimeData } from './realTimeData'
+
 export interface LiveMetrics {
   volume24h: number
   marketCap: number
@@ -79,30 +81,47 @@ export function calculateRankScore(metrics: LiveMetrics, status: string): number
   return Math.max(0, score)
 }
 
-// Update rankings and track position changes
-export function updateRankings(presales: PresaleWithRanking[]): PresaleWithRanking[] {
+// Update rankings and track position changes with real-time data
+export async function updateRankings(presales: PresaleWithRanking[]): Promise<PresaleWithRanking[]> {
   // Store previous ranks
   presales.forEach((presale, index) => {
     presale.previousRank = presale.currentRank || index + 1
   })
   
-  // Update live metrics for each presale
-  const updatedPresales = presales.map(presale => {
-    const currentMetrics = presale.liveMetrics || generateLiveMetrics({
-      volume24h: Math.random() * 5000000,
-      marketCap: Math.random() * 100000000,
-      priceChange24h: (Math.random() - 0.5) * 40,
-      momentum: Math.random() * 100,
-      socialScore: Math.random() * 100,
-      participants: presale.participants || Math.floor(Math.random() * 50000),
-      progress: presale.progress || Math.random() * 100,
-      raise: typeof presale.raise === 'string' ? 
-        parseFloat(presale.raise.replace(/[$,]/g, '')) : 
-        presale.raise
-    })
+  // Update live metrics for each presale with real-time data
+  const updatedPresales = await Promise.all(presales.map(async presale => {
+    let newMetrics: LiveMetrics
     
-    // Add some realistic variation
-    const newMetrics = generateLiveMetrics(currentMetrics)
+    // Try to fetch real-time data first
+    const tokenSymbol = presale.symbol.replace('$', '')
+    
+    if (hasRealTimeData(tokenSymbol)) {
+      const realTimeData = await fetchRealTimeMarketData(tokenSymbol)
+      if (realTimeData) {
+        // Use real-time data and merge with existing values
+        newMetrics = {
+          ...realTimeData,
+          participants: presale.participants || realTimeData.participants,
+          progress: presale.progress !== undefined ? presale.progress : realTimeData.progress,
+          raise: typeof presale.raise === 'string' ? 
+            parseFloat(presale.raise.replace(/[$,]/g, '')) : 
+            (presale.raise || realTimeData.raise)
+        }
+      } else {
+        // Fallback to generated data if API fails
+        newMetrics = generateFallbackMetrics(tokenSymbol)
+      }
+    } else {
+      // Use fallback data for tokens not available in CoinGecko
+      newMetrics = generateFallbackMetrics(tokenSymbol)
+      // Preserve existing values where available
+      newMetrics.participants = presale.participants || newMetrics.participants
+      newMetrics.progress = presale.progress !== undefined ? presale.progress : newMetrics.progress
+      newMetrics.raise = typeof presale.raise === 'string' ? 
+        parseFloat(presale.raise.replace(/[$,]/g, '')) : 
+        (presale.raise || newMetrics.raise)
+    }
+    
     const rankScore = calculateRankScore(newMetrics, presale.status)
     
     return {
@@ -110,7 +129,7 @@ export function updateRankings(presales: PresaleWithRanking[]): PresaleWithRanki
       liveMetrics: newMetrics,
       rankScore
     }
-  })
+  }))
   
   // Sort by rank score (descending)
   const sortedPresales = updatedPresales.sort((a, b) => (b.rankScore || 0) - (a.rankScore || 0))
