@@ -167,4 +167,9 @@
   .crypto-dark {
     color: #1a202c;
   }
+
+  /* Fix h1 bottom padding to prevent text clipping */
+  h1.text-4xl.md\:text-6xl.font-bold.gradient-text.mb-6.animate-fade-in {
+    padding-bottom: 20px;
+  }
 }
