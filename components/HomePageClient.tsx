@@ -1,8 +1,9 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PresaleCard from '@/components/PresaleCard'
 import StatsBar from '@/components/StatsBar'
+import { updateRankings, PresaleWithRanking } from '@/lib/liveRanking'
 
 interface PresaleData {
   title: string
@@ -26,7 +27,27 @@ interface HomePageClientProps {
 
 export default function HomePageClient({ initialPosts }: HomePageClientProps) {
   const [filter, setFilter] = useState('All')
-  const posts = initialPosts
+  const [posts, setPosts] = useState<PresaleWithRanking[]>(initialPosts as PresaleWithRanking[])
+  const [isLive, setIsLive] = useState(true)
+  const [lastUpdate, setLastUpdate] = useState(new Date())
+
+  // Live ranking updates every 8 seconds
+  useEffect(() => {
+    if (!isLive) return
+
+    const interval = setInterval(() => {
+      setPosts(currentPosts => {
+        const updatedPosts = updateRankings([...currentPosts])
+        setLastUpdate(new Date())
+        return updatedPosts
+      })
+    }, 8000) // Update every 8 seconds
+
+    // Initial update
+    setPosts(currentPosts => updateRankings([...currentPosts]))
+
+    return () => clearInterval(interval)
+  }, [isLive])
 
   const filteredPosts = posts.filter((post: any) => {
     if (filter === 'All') return true
@@ -46,9 +67,19 @@ export default function HomePageClient({ initialPosts }: HomePageClientProps) {
           Get early access to the most promising cryptocurrency presales. 
           Track live prices, analyze performance, and never miss an opportunity.
         </p>
-        <div className="flex items-center justify-center space-x-2">
-          <span className="text-green-400 font-medium">● LIVE</span>
-          <span className="text-gray-400">Real-time data from active presales</span>
+        <div className="flex items-center justify-center space-x-4">
+          <div className="flex items-center space-x-2">
+            <span className={`font-medium ${isLive ? 'text-green-400' : 'text-gray-400'}`}>
+              {isLive ? '● LIVE' : '○ PAUSED'}
+            </span>
+            <span className="text-gray-400">Real-time ranking updates</span>
+          </div>
+          <button
+            onClick={() => setIsLive(!isLive)}
+            className="text-xs px-3 py-1 rounded bg-gray-800 hover:bg-gray-700 text-gray-300"
+          >
+            {isLive ? 'Pause' : 'Resume'} Live Updates
+          </button>
         </div>
       </div>
 
@@ -92,8 +123,13 @@ export default function HomePageClient({ initialPosts }: HomePageClientProps) {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-fade-in">
-          {filteredPosts.map((post: any, index: number) => (
-            <PresaleCard key={post.slug || index} presale={post} index={index} />
+          {filteredPosts.map((post: PresaleWithRanking, index: number) => (
+            <PresaleCard 
+              key={post.slug || index} 
+              presale={post} 
+              index={post.currentRank ? post.currentRank - 1 : index}
+              showRankChange={true}
+            />
           ))}
         </div>
       )}
@@ -101,8 +137,13 @@ export default function HomePageClient({ initialPosts }: HomePageClientProps) {
       {/* Last Updated */}
       <div className="text-center mt-12 pt-8 border-t border-gray-800">
         <p className="text-gray-500 text-sm">
-          Data updated: {new Date().toLocaleTimeString()} • 
-          <span className="ml-2 text-green-400">Live presale information</span>
+          Last updated: {lastUpdate.toLocaleTimeString()} • 
+          <span className={`ml-2 ${isLive ? 'text-green-400' : 'text-gray-400'}`}>
+            {isLive ? 'Live rankings active' : 'Live updates paused'}
+          </span>
+          {isLive && (
+            <span className="ml-2 text-blue-400 animate-pulse">🔄 Updating...</span>
+          )}
         </p>
       </div>
     </div>

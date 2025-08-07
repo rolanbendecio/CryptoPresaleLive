@@ -79,6 +79,30 @@
   .pulse-dot {
     animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
+
+  /* Live ranking animations */
+  .rank-up {
+    animation: rankUp 0.5s ease-out;
+  }
+
+  .rank-down {
+    animation: rankDown 0.5s ease-out;
+  }
+
+  .live-update {
+    animation: liveUpdate 1s ease-in-out;
+  }
+
+  /* Glow effects for ranking changes */
+  .rank-glow-up {
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+    border-color: rgba(16, 185, 129, 0.5);
+  }
+
+  .rank-glow-down {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+    border-color: rgba(239, 68, 68, 0.5);
+  }
 }
 
 @layer utilities {
@@ -120,6 +144,24 @@
       opacity: 1; 
       transform: translateY(0); 
     }
+  }
+
+  @keyframes rankUp {
+    0% { transform: scale(1) translateY(0); }
+    50% { transform: scale(1.05) translateY(-3px); }
+    100% { transform: scale(1) translateY(0); }
+  }
+
+  @keyframes rankDown {
+    0% { transform: scale(1) translateY(0); }
+    50% { transform: scale(0.95) translateY(3px); }
+    100% { transform: scale(1) translateY(0); }
+  }
+
+  @keyframes liveUpdate {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; transform: scale(0.98); }
+    100% { opacity: 1; transform: scale(1); }
   }
 
   .crypto-dark {
