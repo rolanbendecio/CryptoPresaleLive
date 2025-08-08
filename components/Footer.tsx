@@ -22,10 +22,10 @@ const Footer = () => {
               Quick Links
             </h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Active Presales</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Top Performers</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">New Listings</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Analytics</a></li>
+              <li><a href="/" className="text-gray-400 hover:text-white transition-colors">Active Presales</a></li>
+              <li><a href="/about" className="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+              <li><a href="/how-it-works" className="text-gray-400 hover:text-white transition-colors">How It Works</a></li>
+              <li><a href="/faq" className="text-gray-400 hover:text-white transition-colors">FAQ</a></li>
             </ul>
           </div>
           
@@ -34,10 +34,10 @@ const Footer = () => {
               Resources
             </h3>
             <ul className="space-y-2">
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
-              <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+              <li><a href="/contact" className="text-gray-400 hover:text-white transition-colors">Contact Us</a></li>
+              <li><a href="/terms" className="text-gray-400 hover:text-white transition-colors">Terms of Service</a></li>
+              <li><a href="/privacy" className="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+              <li><a href="/sitemap.xml" className="text-gray-400 hover:text-white transition-colors">Sitemap</a></li>
             </ul>
           </div>
         </div>

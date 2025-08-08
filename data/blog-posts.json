@@ -1,0 +1,153 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "slug": "best-crypto-presales-january-2025",
+      "title": "Best Crypto Presales to Watch in January 2025",
+      "excerpt": "Our expert analysis of the top 5 crypto presales launching this month, including detailed tokenomics review and investment potential.",
+      "category": "Analysis",
+      "tags": ["presales", "january 2025", "investment", "analysis"],
+      "author": "Market Research Team",
+      "date": "2025-01-08",
+      "featured": true,
+      "readTime": "7 min",
+      "keywords": "best crypto presales january 2025, top presales this month, crypto investment opportunities"
+    },
+    {
+      "id": 2,
+      "slug": "solana-presales-complete-guide",
+      "title": "The Complete Guide to Solana Presales in 2025",
+      "excerpt": "Everything you need to know about participating in Solana-based presales, from wallet setup to transaction optimization.",
+      "category": "Guides",
+      "tags": ["solana", "presales", "guide", "blockchain"],
+      "author": "Tech Team",
+      "date": "2025-01-07",
+      "featured": true,
+      "readTime": "12 min",
+      "keywords": "solana presales, SOL presale guide, solana token launches"
+    },
+    {
+      "id": 3,
+      "slug": "crypto-presale-tax-guide",
+      "title": "Crypto Presale Tax Guide: What You Need to Know",
+      "excerpt": "Understanding tax implications of presale investments in different jurisdictions. Expert advice on reporting and compliance.",
+      "category": "Education",
+      "tags": ["taxes", "legal", "compliance", "education"],
+      "author": "Legal Team",
+      "date": "2025-01-06",
+      "readTime": "9 min",
+      "keywords": "crypto presale taxes, cryptocurrency tax guide, presale tax implications"
+    },
+    {
+      "id": 4,
+      "slug": "defi-presales-trending-2025",
+      "title": "Why DeFi Presales Are Trending in 2025",
+      "excerpt": "Analysis of the DeFi presale boom, key projects to watch, and what's driving institutional interest in decentralized finance.",
+      "category": "Analysis",
+      "tags": ["defi", "trends", "analysis", "institutional"],
+      "author": "DeFi Analyst",
+      "date": "2025-01-05",
+      "readTime": "8 min",
+      "keywords": "defi presales 2025, decentralized finance trends, defi investment"
+    },
+    {
+      "id": 5,
+      "slug": "presale-vesting-schedules-explained",
+      "title": "Understanding Presale Vesting Schedules",
+      "excerpt": "Deep dive into vesting mechanisms, cliff periods, and how token unlock schedules affect price action and investment strategy.",
+      "category": "Education",
+      "tags": ["vesting", "tokenomics", "education", "strategy"],
+      "author": "CryptoLaunch Team",
+      "date": "2025-01-04",
+      "readTime": "6 min",
+      "keywords": "presale vesting schedule, token unlock periods, cliff vesting crypto"
+    },
+    {
+      "id": 6,
+      "slug": "layer-2-presales-ethereum",
+      "title": "Layer 2 Presales: The Future of Ethereum Scaling",
+      "excerpt": "Exploring presale opportunities in Layer 2 solutions. Arbitrum, Optimism, and emerging L2 projects worth watching.",
+      "category": "Technology",
+      "tags": ["layer2", "ethereum", "scaling", "technology"],
+      "author": "Blockchain Expert",
+      "date": "2025-01-03",
+      "readTime": "10 min",
+      "keywords": "layer 2 presales, ethereum scaling solutions, L2 crypto projects"
+    },
+    {
+      "id": 7,
+      "slug": "avoiding-presale-scams-red-flags",
+      "title": "10 Red Flags to Avoid Presale Scams",
+      "excerpt": "Protect your investments by learning to identify common scam tactics, fake teams, and fraudulent presale projects.",
+      "category": "Security",
+      "tags": ["security", "scams", "due-diligence", "protection"],
+      "author": "Security Team",
+      "date": "2025-01-02",
+      "featured": true,
+      "readTime": "7 min",
+      "keywords": "presale scams, crypto fraud, investment security, red flags"
+    },
+    {
+      "id": 8,
+      "slug": "gaming-presales-play-to-earn",
+      "title": "Gaming Presales: The Play-to-Earn Revolution",
+      "excerpt": "Analysis of blockchain gaming presales, P2E tokenomics, and the most promising GameFi projects launching this quarter.",
+      "category": "Gaming",
+      "tags": ["gaming", "play-to-earn", "gamefi", "metaverse"],
+      "author": "Gaming Analyst",
+      "date": "2025-01-01",
+      "readTime": "11 min",
+      "keywords": "gaming presales, play to earn crypto, gamefi investments"
+    }
+  ],
+  "categories": [
+    {
+      "name": "Analysis",
+      "slug": "analysis",
+      "description": "Market analysis and presale evaluations",
+      "postCount": 15
+    },
+    {
+      "name": "Guides",
+      "slug": "guides",
+      "description": "Step-by-step tutorials and how-to guides",
+      "postCount": 12
+    },
+    {
+      "name": "Education",
+      "slug": "education",
+      "description": "Educational content for all skill levels",
+      "postCount": 18
+    },
+    {
+      "name": "Security",
+      "slug": "security",
+      "description": "Security best practices and scam prevention",
+      "postCount": 8
+    },
+    {
+      "name": "Technology",
+      "slug": "technology",
+      "description": "Blockchain technology and innovations",
+      "postCount": 10
+    },
+    {
+      "name": "Gaming",
+      "slug": "gaming",
+      "description": "GameFi and play-to-earn projects",
+      "postCount": 7
+    },
+    {
+      "name": "News",
+      "slug": "news",
+      "description": "Breaking news and updates",
+      "postCount": 25
+    },
+    {
+      "name": "Reviews",
+      "slug": "reviews",
+      "description": "In-depth project reviews",
+      "postCount": 20
+    }
+  ]
+}

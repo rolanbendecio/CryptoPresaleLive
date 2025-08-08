@@ -4,6 +4,8 @@ import fs from 'fs'
 import path from 'path'
 import { notFound } from 'next/navigation'
 import SEO from '@/components/SEO'
+import JsonLd from '@/components/JsonLd'
+import { generatePresaleSchema, generateBreadcrumbSchema, generateFinancialServiceSchema } from '@/lib/schemas'
 
 interface PresaleData {
   title: string
@@ -82,6 +84,13 @@ export default function PresaleDetailPage({ params }: { params: { slug: string }
         type="article"
         url={`https://cryptolaunch.app/presale/${presale.slug}`}
       />
+      <JsonLd data={generatePresaleSchema(presale)} />
+      <JsonLd data={generateBreadcrumbSchema([
+        { name: "Home", url: "/" },
+        { name: "Presales", url: "/" },
+        { name: presale.title, url: `/presale/${presale.slug}` }
+      ])} />
+      <JsonLd data={generateFinancialServiceSchema()} />
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Back button */}
         <Link 

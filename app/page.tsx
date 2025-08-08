@@ -5,6 +5,8 @@ import PresaleCard from '@/components/PresaleCard'
 import StatsBar from '@/components/StatsBar'
 import SEO from '@/components/SEO'
 import HomePageClient from '@/components/HomePageClient'
+import JsonLd from '@/components/JsonLd'
+import { generateLiveBlogPostingSchema, generateWebsiteSchema, generateOrganizationSchema, generateCollectionPageSchema } from '@/lib/schemas'
 
 interface PresaleData {
   title: string
@@ -65,6 +67,14 @@ export default function HomePage() {
         description="Discover the hottest cryptocurrency presales with real-time updates and exclusive access. Track live prices, analyze performance, and never miss an opportunity."
         keywords="crypto presales, cryptocurrency, presale, ICO, IDO, crypto investment, blockchain, live prices"
       />
+      <JsonLd data={generateLiveBlogPostingSchema(posts)} />
+      <JsonLd data={generateWebsiteSchema()} />
+      <JsonLd data={generateOrganizationSchema()} />
+      <JsonLd data={generateCollectionPageSchema(
+        "Live Crypto Presales Collection",
+        "Real-time tracking of active cryptocurrency presales with live updates every 8 seconds",
+        posts
+      )} />
       <HomePageClient initialPosts={posts} />
     </>
   )
