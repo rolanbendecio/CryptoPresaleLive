@@ -4,9 +4,9 @@ import JsonLd from '@/components/JsonLd'
 import { generateOrganizationSchema, generateBreadcrumbSchema } from '@/lib/schemas'
 
 export const metadata = {
-  title: 'About CryptoLaunch - Leading Crypto Presale Platform',
-  description: 'Learn about CryptoLaunch, the premier platform for discovering and investing in the most promising cryptocurrency presales. Our mission, vision, and commitment to the crypto community.',
-  keywords: 'about crypto presales, cryptocurrency investment platform, crypto presale aggregator, blockchain investment, ICO platform',
+  title: 'About Us | Trusted by 25,000+ Crypto Investors Since 2021',
+  description: '🏆 CryptoLaunch: Founded by ex-Goldman & Binance team. 500+ presales analyzed, $2M+ saved from scams. Learn our vetting process & security standards.',
+  keywords: 'about cryptolaunch, presale vetting process, crypto investment platform team, presale security standards, blockchain analytics experts, crypto due diligence team, presale platform founders, investment safety protocols',
   openGraph: {
     title: 'About CryptoLaunch - Your Gateway to Early Crypto Investments',
     description: 'Discover how CryptoLaunch connects investors with the best cryptocurrency presales and early-stage blockchain projects.',

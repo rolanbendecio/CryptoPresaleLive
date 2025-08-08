@@ -27,7 +27,9 @@ interface PresaleData {
 function loadPresaleData(): PresaleData[] {
   try {
     const dataDir = path.join(process.cwd(), 'data')
-    const files = fs.readdirSync(dataDir).filter(file => file.endsWith('.json'))
+    const files = fs.readdirSync(dataDir).filter(file => 
+      file.endsWith('.json') && file !== 'blog-posts.json'
+    )
     
     const presales: PresaleData[] = []
     
@@ -36,6 +38,11 @@ function loadPresaleData(): PresaleData[] {
         const filePath = path.join(dataDir, file)
         const fileContent = fs.readFileSync(filePath, 'utf8')
         const data = JSON.parse(fileContent)
+        
+        // Skip if it doesn't have required presale fields
+        if (!data.title || !data.symbol || !data.raise) {
+          continue
+        }
         
         // Create slug from filename
         const slug = file.replace('.json', '')

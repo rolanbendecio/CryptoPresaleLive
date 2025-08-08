@@ -2,9 +2,9 @@ import React from 'react'
 import SEO from '@/components/SEO'
 
 export const metadata = {
-  title: 'Privacy Policy - CryptoLaunch',
-  description: 'Learn how CryptoLaunch collects, uses, and protects your personal information. Our commitment to data privacy and GDPR compliance.',
-  keywords: 'privacy policy, data protection, GDPR, personal information, crypto platform privacy',
+  title: 'Privacy Policy | GDPR & CCPA Compliant - CryptoLaunch',
+  description: 'Privacy policy for CryptoLaunch users. GDPR/CCPA compliant, no data selling, encrypted storage, anonymous browsing. Last updated January 2025.',
+  keywords: 'cryptolaunch privacy policy, GDPR compliance crypto platform, CCPA data protection, user privacy cryptocurrency, anonymous presale browsing, data encryption standards',
   openGraph: {
     title: 'Privacy Policy - CryptoLaunch',
     description: 'Our commitment to protecting your privacy and personal data on the CryptoLaunch platform.',

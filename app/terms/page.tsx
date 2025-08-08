@@ -2,9 +2,9 @@ import React from 'react'
 import SEO from '@/components/SEO'
 
 export const metadata = {
-  title: 'Terms of Service - CryptoLaunch',
-  description: 'Read the terms of service for using CryptoLaunch platform. Understand your rights, responsibilities, and our policies regarding crypto presale information and services.',
-  keywords: 'terms of service, crypto presale terms, user agreement, legal terms, cryptocurrency platform rules',
+  title: 'Terms of Service | Legal Agreement - CryptoLaunch',
+  description: 'Terms of service for CryptoLaunch platform. User rights, investment disclaimers, platform usage rules. Last updated January 2025. DYOR policy applies.',
+  keywords: 'cryptolaunch terms of service, presale platform legal terms, crypto investment disclaimer, user agreement 2025, presale platform rules, investment risk disclosure',
   openGraph: {
     title: 'Terms of Service - CryptoLaunch',
     description: 'Terms and conditions for using the CryptoLaunch crypto presale platform.',

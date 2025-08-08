@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import SEO from '@/components/SEO'
 import JsonLd from '@/components/JsonLd'
 import { generateOrganizationSchema, generateBreadcrumbSchema } from '@/lib/schemas'
+import { seoConfig } from '@/lib/seo-config'
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -40,9 +41,9 @@ export default function ContactPage() {
   return (
     <>
       <SEO 
-        title="Contact Us - Get Support | CryptoLaunch"
-        description="Contact CryptoLaunch for support, partnership inquiries, or to submit your presale project for listing. We're here to help with all your crypto presale needs."
-        keywords="contact crypto presale, support, submit presale, partnership, cryptocurrency help"
+        title={seoConfig.pages.contact.title}
+        description={seoConfig.pages.contact.description}
+        keywords={seoConfig.pages.contact.keywords}
       />
       <JsonLd data={generateOrganizationSchema()} />
       <JsonLd data={generateBreadcrumbSchema([

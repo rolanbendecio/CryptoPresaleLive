@@ -5,9 +5,9 @@ import JsonLd from '@/components/JsonLd'
 import { generateBreadcrumbSchema } from '@/lib/schemas'
 
 export const metadata = {
-  title: 'What is a Crypto Presale? Complete Guide for Beginners (2025)',
-  description: 'Learn what crypto presales are, how they work, and why investors participate. Written by blockchain experts with 10+ years experience in cryptocurrency investments.',
-  keywords: 'what is crypto presale, cryptocurrency presale explained, token presale guide, ICO vs presale, crypto investment basics',
+  title: 'What is a Crypto Presale? Expert Guide 2025 (15 Min Read)',
+  description: '🎓 Complete presale guide by ex-Morgan Stanley CFA: Definition, process, risks, 200+ presale experience. Learn how to spot scams & evaluate opportunities safely.',
+  keywords: 'what is crypto presale, how do presales work, presale vs ICO difference, crypto presale guide 2025, token presale explained, presale investment risks, how to buy presale crypto, presale due diligence, crypto presale for beginners, presale vesting schedule',
   authors: [{ name: 'Michael Chen, CFA' }],
   openGraph: {
     title: 'What is a Crypto Presale? Expert Guide 2025',

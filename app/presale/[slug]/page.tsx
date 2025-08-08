@@ -18,6 +18,9 @@ interface PresaleData {
   slug: string
   date: string
   category?: string
+  progress?: number
+  participants?: number
+  endDate?: string
 }
 
 function loadPresaleBySlug(slug: string): PresaleData | null {
@@ -42,10 +45,56 @@ function loadPresaleBySlug(slug: string): PresaleData | null {
   }
 }
 
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const presale = loadPresaleBySlug(params.slug)
+  
+  if (!presale) {
+    return {
+      title: 'Presale Not Found',
+      description: 'The requested presale could not be found.'
+    }
+  }
+
+  const formattedTitle = presale.title.replace('-', ' ').split(' ').map(word => 
+    word.charAt(0).toUpperCase() + word.slice(1)
+  ).join(' ')
+
+  return {
+    title: `${formattedTitle} (${presale.symbol}) Presale | Live Now - ${presale.apy} APY`,
+    description: `🚀 ${formattedTitle} presale is ${presale.status}. ${presale.description} Current raise: $${typeof presale.raise === 'number' ? presale.raise.toLocaleString() : presale.raise}. Join ${presale.participants || '1000'}+ investors.`,
+    keywords: `${presale.title} presale, ${presale.symbol} token sale, ${presale.symbol} ICO, buy ${presale.symbol} presale, ${presale.title} investment, ${presale.category || 'crypto'} presale`,
+    openGraph: {
+      title: `${formattedTitle} Presale - ${presale.status} | ${presale.apy} APY`,
+      description: presale.description,
+      type: 'article',
+      url: `https://cryptolaunch.com/presale/${params.slug}`,
+      images: [
+        {
+          url: `/presales/${params.slug}.png`,
+          width: 1200,
+          height: 630,
+          alt: `${formattedTitle} Presale`
+        }
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${formattedTitle} Presale | ${presale.apy} APY`,
+      description: `${presale.status}: ${presale.description.slice(0, 100)}...`,
+      images: [`/presales/${params.slug}.png`],
+    },
+    alternates: {
+      canonical: `/presale/${params.slug}`,
+    },
+  }
+}
+
 export async function generateStaticParams() {
   try {
     const dataDir = path.join(process.cwd(), 'data')
-    const files = fs.readdirSync(dataDir).filter(file => file.endsWith('.json'))
+    const files = fs.readdirSync(dataDir).filter(file => 
+      file.endsWith('.json') && file !== 'blog-posts.json'
+    )
     
     return files.map(file => ({
       slug: file.replace('.json', '')

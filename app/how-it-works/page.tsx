@@ -4,9 +4,9 @@ import JsonLd from '@/components/JsonLd'
 import { generateHowToSchema, generateBreadcrumbSchema } from '@/lib/schemas'
 
 export const metadata = {
-  title: 'How It Works - Crypto Presale Investment Guide | CryptoLaunch',
-  description: 'Learn how to invest in cryptocurrency presales safely. Step-by-step guide to discovering, analyzing, and participating in crypto presales through CryptoLaunch platform.',
-  keywords: 'how to invest crypto presale, cryptocurrency presale guide, ICO investment tutorial, crypto presale steps, blockchain investment guide',
+  title: 'How to Buy Crypto Presales 2025 | 5-Step Beginner Guide',
+  description: '📚 Complete guide: 1) Setup wallet 2) Buy ETH/BNB 3) Connect to presale 4) Pass KYC 5) Purchase tokens. Video tutorials, safety tips, common mistakes to avoid.',
+  keywords: 'how to buy crypto presale 2025, presale investment guide step by step, metamask presale tutorial, presale KYC process explained, buy presale tokens safely, presale gas fees guide, wallet setup for presales, presale investment for beginners',
   openGraph: {
     title: 'How to Invest in Crypto Presales - Complete Guide',
     description: 'Step-by-step guide to discovering and investing in the best cryptocurrency presales through CryptoLaunch.',

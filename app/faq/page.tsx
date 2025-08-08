@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import SEO from '@/components/SEO'
 import JsonLd from '@/components/JsonLd'
 import { generateFAQSchema, generateBreadcrumbSchema } from '@/lib/schemas'
+import { seoConfig } from '@/lib/seo-config'
 
 interface FAQItem {
   question: string
@@ -115,9 +116,9 @@ export default function FAQPage() {
   return (
     <>
       <SEO 
-        title="FAQ - Frequently Asked Questions | CryptoLaunch"
-        description="Find answers to common questions about crypto presales, investment strategies, security, and using the CryptoLaunch platform."
-        keywords="crypto presale FAQ, cryptocurrency investment questions, ICO FAQ, presale guide, blockchain investment help"
+        title={seoConfig.pages.faq.title}
+        description={seoConfig.pages.faq.description}
+        keywords={seoConfig.pages.faq.keywords}
       />
       <JsonLd data={generateFAQSchema(faqData)} />
       <JsonLd data={generateBreadcrumbSchema([

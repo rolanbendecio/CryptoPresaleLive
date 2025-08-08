@@ -5,9 +5,9 @@ import JsonLd from '@/components/JsonLd'
 import { generateBreadcrumbSchema } from '@/lib/schemas'
 
 export const metadata = {
-  title: 'Crypto Blog & News - Latest Presale Updates | CryptoLaunch',
-  description: 'Stay updated with the latest crypto presale news, investment guides, project reviews, and market analysis. Your source for crypto presale education and insights.',
-  keywords: 'crypto blog, presale news, cryptocurrency articles, ICO updates, investment guides, crypto education',
+  title: 'Crypto Presale Blog 2025 | Expert Analysis & Investment Guides',
+  description: '📝 Read 100+ expert guides on crypto presales. Due diligence tips, scam alerts, weekly top picks. Written by CFA analysts with $50M+ managed. Updated daily.',
+  keywords: 'crypto presale blog, ICO analysis 2025, presale investment guide, token sale reviews, crypto due diligence, presale scam alerts, defi presale news, expert crypto analysis, tokenomics explained, presale strategies 2025',
   openGraph: {
     title: 'CryptoLaunch Blog - Crypto Presale News & Insights',
     description: 'Expert analysis, guides, and news about cryptocurrency presales and early-stage investments.',
